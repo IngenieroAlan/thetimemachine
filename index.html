@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('./src/assets/fondo.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .login-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .login-container h2 {
+            margin-bottom: 20px;
+        }
+
+        .login-form {
+            margin-top: 20px;
+        }
+
+        .login-form input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        .login-form input[type="submit"] {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .login-container {
+                max-width: 90%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-container">
+        <div style="padding-right: 25px;">
+            <h2>Ingresa las palabras ocultas</h2>
+            <form class="login-form" action="#" method="post">
+                <input type="text" name="palabra1" placeholder="Palabra nº1" required>
+                <input type="text" name="palabra2" placeholder="Palabra nº2" required>
+                <input type="submit" value="Enviar">
+            </form>
+        </div>
+    </div>
+    <script>
+        
+    </script>
+</body>
+
+</html>
