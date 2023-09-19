@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,9 +8,14 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f2f2f2;
+            background-color: #fffcec;
             margin: 0;
             padding: 0;
+        }
+
+        .bodyIndex {
+            width: '100%';
+            background-color: #f2f2f2;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -59,22 +65,173 @@
                 max-width: 90%;
             }
         }
+
+        .bodyEscrito {
+            font-family: Arial, sans-serif;
+            background-color: #fffcec;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #ffa600;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+        }
+
+        .container p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            margin-left: 30px;
+            margin-right: 30px;
+            text-align: justify;
+        }
+
+        .submit-button {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .submit-button:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 
 <body>
-    <div class="login-container">
-        <div style="padding-right: 25px;">
-            <h2>Ingresa las palabras ocultas</h2>
-            <form class="login-form" action="#" method="post">
-                <input type="text" name="palabra1" placeholder="Palabra nº1" required>
-                <input type="text" name="palabra2" placeholder="Palabra nº2" required>
-                <input type="submit" value="Enviar">
-            </form>
+    <div id="app">
+        <div v-if="isLogged==false" class="bodyIndex">
+            <div class="login-container">
+                <div style="padding-right: 25px;">
+                    <h2>Ingresa las palabras ocultas</h2>
+                    <form class="login-form">
+                        <input type="text" v-model="palabra1" name="palabra1" placeholder="Palabra nº1" required>
+                        <input type="text" v-model="palabra2" name="palabra2" placeholder="Palabra nº2" required>
+                        <button type="submit" v-on:click="login">
+                            Enviar
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div v-else class=".bodyEscrito">
+            <header>
+                <h1>Escrito</h1>
+            </header>
+            <div class="container">
+                <h2>Querida Lizbeth</h2>
+                <p>
+                    Hi Liz “Caradecola”, Here is Brandon/Alan & im approaching this moment to tell u how proud im for
+                    all those
+                    goals and achievements that u are succeeding cuz when we were a couple i remember that u were so
+                    nervous
+                    about your future & i was like “No Liz, u can do that” and told u to do an “achievement test” and
+                    that “i
+                    will help u to go to the best university on mexico” but it doesn't happened cuz we end our
+                    relationship….. i
+                    promise it was for good and now u confirmed that, now u are that girl that u told me u wanted to be,
+                    u are
+                    that “maestra mamasita'' jajajaja (Lo estoy pasando a limpio y me volví a reír), it's so good to
+                    remind
+                    those good moments we have, we had bad and worst but the good ones were more and getting back to
+                    point u are
+                    a teacher, almost a professionist, u learned a new language that u never expected, u are that
+                    “mamasita” u
+                    told me u wanted to be and u are gonna find your Tracey. I expect you to see “How i met your mother”
+                    to
+                    understand that reference cuz u also will understand why i told you i'm Robbin and u Ted, maybe u
+                    might not
+                    think as i am, maybe you have another Robbin in your mind but in my mind and my story it's like this
+                    (& the
+                    cheese).
+                    <br><br>
+
+                    (Maybe when you read this all that I'm writing makes no sense but that is how I felt and still
+                    feeling…)
+                    <br><br>
+
+                    When you finish with the series you will understand why I always told you that I want to leave this
+                    city cuz
+                    it's something that Robbins do jejeje… I hope u to be happier than ever, love u a lot, u can not
+                    believe me
+                    but i will always love u.
+                    <br><br>
+
+                    (Aquí iba algo que escribí pero me da pena jajaja, mejor cuando te entregue el primer escrito ahí lo
+                    lees)
+                    <br><br>
+                    I don't want to confuse you, I'm just expressing my feelings. you just asked me this week if i would
+                    imagine
+                    us getting married, and my answer was “Yes, it wouldn't be weird”.
+                    Maybe I'm miss understanding things and I'm sorry if that's the case, I just want to let you know
+                    that I
+                    love you and with you my only purpose is to see you succeeding more goals and being loved the right
+                    way and
+                    I don't care if it’s not with me. I have more things to say but let time find the place.
+                    <br><br>
+                    De: Brandon Alan
+                    <br>
+                    Para: Liz
+
+                    fecha: 05/Sept/2023
+                </p>
+            </div>
         </div>
     </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script>
-        
+        const { createApp, ref } = Vue
+
+        createApp({
+            setup() {
+                const palabra1 = ref('');
+                const palabra2 = ref('');
+                const isLogged = ref(false);
+                return {
+                    palabra1,
+                    palabra2,
+                    isLogged
+                }
+            },
+            methods: {
+                login() {
+                    const palabras = [
+                        'Malecon',
+                        'Malecón',
+                        'Atardecer'
+                    ]
+                    if (this.palabra1.toLowerCase() === palabras[0].toLowerCase()
+                        || this.palabra1.toLowerCase() === palabras[1].toLowerCase()) {
+                        if (this.palabra2.toLowerCase() === palabras[2].toLowerCase()) {
+                            console.log('Entro');
+                            this.isLogged = true;
+                        }
+                    }
+                    if(!this.isLogged){
+                        alert('Palabras invalidas');
+                    }
+                }
+            }
+        }).mount('#app')
     </script>
 </body>
 
